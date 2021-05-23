@@ -10,7 +10,7 @@ The pipeline of this work relies on the following steps:
 All steps will be considered in detail in this chapter.
 \section{Dataset selection}
 
-SMILES of drug-like molecules from ZINC20 library were taken as a dataset for this work with following rules: $200\ <\ \text{MW}\ <\ 500$, $\text{logP} < 5$.
+\acrshort{smiles} of drug-like molecules from ZINC20 library were taken as a dataset for this work with following rules: $200\ <\ \text{MW}\ <\ 500$, $\text{logP} < 5$.
 The distribution of number of compounds on their molecular weight and log P is showed on  Fig.\ref{zinc}.
 
 \begin{figure}[H]
@@ -22,7 +22,7 @@ The distribution of number of compounds on their molecular weight and log P is s
 
 \section{Fingerprints generation}
 
-Morgan fingerprints were generated from SMILES (2048 bits in the fingerprint) using $\text{chemfp}^{\cite{Dalke2019TheProject}}$ 1.6.1 with following parameters:
+Morgan fingerprints were generated from \acrshort{smiles} (2048 bits in the fingerprint) using $\text{chemfp}^{\cite{Dalke2019TheProject}}$ 1.6.1 with following parameters:
 \begin{itemize}
     \item radius 2 or 3;
     \item 2048 or 4096 bits in the fingerprint;
@@ -35,12 +35,12 @@ Atom pair fingerprints were generated with RDKit module, with 2048 bits in the f
 
 \section{Molecular docking}
 Docking was performed using ICM-Pro molecular modeling software.
-X-ray crystal structures of Human cannabinoid receptor 2 (CNR2) and adenosine receptor A2 (AA2AR) from Protein Data Bank (PDB) were used.
+X-ray crystal structures of Human cannabinoid receptor 2 (CNR2) and adenosine receptor A2 (AA2AR) from \acrlong{pdb} (\acrshort{pdb}) were used.
 CNR2 models were prepared using structure with antagonist AM10257 at 2.8 A resolution (PDB ID 5ZTY), while for AA2AR models the structure with antagonist ZM241385 at 1.8 A resolution (PDB ID 4EIY) was taken.
-The structures were converted from PDB coordinates to ICM objects using ICM-Pro conversion algorithm.\\
+The structures were converted from \acrshort{pdb} coordinates to ICM objects using ICM-Pro conversion algorithm.\\
 %Add description of conversion algorithm
 
-All compounds in the screening library were converted from SMILES to SDF format, hydrogen atoms were built and formal charges were assigned at pH=7.0 according to ICM pKa Model implemented in ICM-Pro.
+All compounds in the screening library were converted from \acrshort{smiles} to SDF format, hydrogen atoms were built and formal charges were assigned at pH=7.0 according to ICM pKa Model implemented in ICM-Pro.
 
 \section{Machine learning model selection}
 % add part about classification or regression task ??

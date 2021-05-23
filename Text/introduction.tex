@@ -99,7 +99,7 @@ For example, $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$ is a free databas
 There is a common way to store information about molecules compound libraries.
 For example, \acrshort{smiles} notation is often used.\\
 
-\section{\acrshort{qsar} models}
+\section{QSAR models}
 One of the major computational tools in drug design is quantitative structure-activity relationship, \acrshort{qsar} - a method of mapping chemical structure to molecular $\text{properties}^{\cite{Polanski2009ReceptorInteractions}}$. 
 Some features, like molecular weight, can be calculated directly for any structure, synthesised or just virtual, while other characteristics, e.g. logP, should be measured only experimentally.
 \acrshort{qsar} models attempt to predict these unknown properties based on the information from the molecules which have been already tested experimentally.
@@ -132,7 +132,7 @@ The main assumption in \acrshort{qsar} is that every property of a molecule is a
 %   One of the ways to represent molecules in chemoinformatics is as a vector; then molecules can be interpreted as points in the chemical space; their coordinates are then called descriptors.
 
 \noindent Descriptors should meet several $\text{criteria}^{\cite{
-Baskin2020IntroductionChemoinformatics.}}$:
+Baskin2020IntroductionRussian}}$:
 \begin{itemize}
     \item invariant to atom and bonds renumbering;
     \item invariant to rotation and shift;
@@ -222,9 +222,9 @@ The process of generating atom pair fingerprints consist of several steps:
       \item Flexible ligand-flexible-protein: both ligand and target are considered as flexible. One of the ways to take into consideration the target flexibility is to dock ligand into multiple fixed receptor $\text{conformations}^{\cite{Totrov2008FlexibleAlternative}}$;
   \end{itemize}
   
-  Scoring functions (SF) must predict binding free-energy accurate enough, so different types of physical interactions and entropic effects should be taken into account.
+  Scoring functions (\acrshort{sf}) must predict binding free-energy accurate enough, so different types of physical interactions and entropic effects should be taken into account.
   However, current computational resources constrain the algorithm's complexity.
-  Thus, SF make approximations in order to compromise between speed and accuracy. One can divide a wide range of scoring functions into four $\text{classes}^{\cite{Liu2015ClassificationFunctions}, \cite{Li2019AnDocking}}$:
+  Thus, \acrshort{sf} make approximations in order to compromise between speed and accuracy. One can divide a wide range of scoring functions into four $\text{classes}^{\cite{Liu2015ClassificationFunctions}, \cite{Li2019AnDocking}}$:
   \begin{itemize}
         \item Empirical methods: the SF sums up the contributions of several terms, each related to energetic factor in protein-ligand binding.
         This terms might be "rewarding", such as hydrogen binding, or "penalties", e.g. frozen rotatable bonds.
@@ -256,8 +256,8 @@ One of the possible solutions is to combine classic molecular docking with \acrs
 % Surprisingly, first works devoted to the docking acceleration, used deep learning (DL) methods without comparing them with less sophisticated models. (\cite{Morrone2020CombiningApproach}, \cite{Jastrzebski2020EmulatingScreening}).\\
  
 In a number of works, the construction of an iterative algorithm has been reported.
-For instance, Deep $\text{Docking}^{\cite{Gentile2020DeepDiscovery}}$ (DD), a platform which employs \acrshort{qsar} deep models trained on docking scores to iteratively predict the docking outcome for all entities in the library and put away unfavorable molecules, has been presented.
-Authors had chosen Morgan fingerprints as features, and had constructed the pipeline in the following way: at initial step, the training subset is docked into the target; in all the rest of the steps, docked molecules are divided into 'hits' and 'non-hits' according to the score cut-off, the DL model is retrained on the received information and predict docking outcomes on the all entities of the library, and the predefined number of molecules selected randomly from predicted 'hits' and docked in order to augment the training set.\\
+For instance, Deep $\text{Docking}^{\cite{Gentile2020DeepDiscovery}}$ (\acrshort{dd}), a platform which employs \acrshort{qsar} deep models trained on docking scores to iteratively predict the docking outcome for all entities in the library and put away unfavorable molecules, has been presented.
+Authors had chosen Morgan fingerprints as features, and had constructed the pipeline in the following way: at initial step, the training subset is docked into the target; in all the rest of the steps, docked molecules are divided into 'hits' and 'non-hits' according to the score cut-off, the \acrshort{dl} model is retrained on the received information and predict docking outcomes on the all entities of the library, and the predefined number of molecules selected randomly from predicted 'hits' and docked in order to augment the training set.\\
 
 Another example of iterations usage is a $\text{paper}^{\cite{Graff2020AcceleratingLearning}}$ describing the application of the Bayesian statistics for docking hits search. \\
 
