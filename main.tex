@@ -1,0 +1,44 @@
+\documentclass[oneside,12pt,a4paper]{extreport}
+
+
+\input{packages}
+\input{acronyms}
+
+
+\begin{document} 
+
+\input{Text/title}
+
+
+\tableofcontents
+\thispagestyle{plain} 
+\newpage
+
+
+\input{Text/introduction}
+\input{Text/methods}
+\input{Text/results}
+\input{Text/conclusion}
+
+
+
+\bibliography{references}
+\bibliographystyle{gost780}
+\addcontentsline{toc}{section}{\ \ \ \ \ \ \ Bibliography}
+
+
+
+\addcontentsline{toc}{chapter}{\ \ \ \ Supplements}
+
+
+\listoffigures
+\addcontentsline{toc}{section}{\ \ \ \ \ \ \ List of Figures}
+
+
+\listoftables
+\addcontentsline{toc}{section}{\ \ \ \ \ \ \ List of Tables}
+
+
+\printglossary[type=\acronymtype]
+
+\end{document}  
