@@ -61,10 +61,6 @@ where intersection is:
          \text{intersection} = \left( \text{top-k\% molecules in true rating}\right) \cap \left( \text{top-k\% molecules in predicted rating}\right)
 \end{equation*}
 
-Recall and top-k\% score are two metrics convenient for comparison between regressors and classifiers.
-Indeed, it is possible to "transform" regressor into classifier: the cut-off may be established so k\% of the molecules with the best score are to become hits; after that transformation the calculated recall turns out to be equal to top-k\% score.
-Thence, it was assumed in analysis that if the classifier's recall is lower than the regressor's top-k score, this classifier is "worse" than that regressor.\\
-
 When iterative algorithms were investigated, several parameters had to be checked: single models' top-1\% scores were calculated as well as the recall of the complex models.
 Furthermore, the percentage of docking hits from the entire dataset was examined.
 In this case docking hits were defined as top-1\% of all items in the set.\\
@@ -74,9 +70,17 @@ To understand how great or poor the performance of the ML models is, two types o
 First model is second docking performed with effort=1 and it is supposed that it gives the upper bond: none ML model can outperform docking.
 The lower bound is taken from dummy regressors and classifiers: model returning random values according to normal or uniform distribution was utilized as a dummy regressor, and a classifier which simply returns the most frequent class was chosen to be dummy classifier.\\
 
-\subsection{Selection procedure}
+\subsection{Classifiers vs Regressors}
+
 Firstly, both regression and classification models were examined.
-Regressors were taught on the docking scores, while for classifiers the scores were binarised: molecules were ranked according to their score, and top 0.5\%, 1\%, 2\% or 5\% of the dataset were considered further as docking hits.
+Regressors were taught on the docking scores, while for classifiers the scores were binarised: molecules were ranked according to their score, and top 0.5\%, 1\%, 2\% or 5\% of the dataset were considered further as docking hits.\\
+
+Recall and top-k\% score are two metrics convenient for comparison between regressors and classifiers.
+Indeed, it is possible to "transform" regressor into classifier: the cut-off may be established so k\% of the molecules with the best score are to become hits; after that transformation the calculated recall turns out to be equal to top-k\% score.
+Thence, it was assumed in analysis that if the classifier's recall is lower than the regressor's top-k score, this classifier is "worse" than that regressor.\\
+
+\subsection{Selection procedure}
+
 The following classifiers and regressors were tested:
 \begin{itemize}
     \item Linear regression;
@@ -95,14 +99,15 @@ The following classifiers and regressors were tested:
 All models were imported from scikit-learn Python library and trained over 5 cross-validation repeats with different set sizes (8000, 40000, 80000, 160000 and 320000 compounds).
 Besides, classifiers were trained on different types of binarised scores depending on the percentage of the docking hits (0.5\%, 1\%, 2\% or 5\%).
 
+
+\section{Iterative algorithm development}
+
 \begin{figure}
     \centering
-    \includegraphics[scale=0.7]{Images/image1.png}
+    \includegraphics[scale=0.72]{Images/image1.png}
     \caption{Two ways of treating the train set in iterative algorithm}
     \label{TrainSetSelection}
 \end{figure}
-
-\section{Iterative algorithm development}
 
 In iterative algorithms, only regression methods were used.
 The pipeline of the algorithm consists of the following steps:
@@ -125,6 +130,15 @@ Thus, models from different step will search for docking hits in various parts o
 Both approaches were tested within the iterative algorithms.\\
 
 \subsection{Complex model creation}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{Images/image2.png}
+    \caption{Types of complex model}
+    \label{ComplexModels}
+\end{figure}
+
 If there are several ML models available, it is possible to combine them somehow to create a complex model.
 Three types of complex models were employed in the algorithm (Fig. \ref{ComplexModels}):
 \begin{itemize}
@@ -134,12 +148,6 @@ Three types of complex models were employed in the algorithm (Fig. \ref{ComplexM
     \item \textbf{Mean Rank}: for each compound, the positions in the ratings of all models are averaged; the k\% of the compounds with the smallest average positions are handled as hits.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.7]{Images/image2.png}
-    \caption{Types of complex model}
-    \label{ComplexModels}
-\end{figure}
 
 \section{Linear model visualisation}
 If complex model is composed of linear regressions, the coefficients of single models can be visualised with help of t-SNE, t-distributed stochastic neighbor embedding.

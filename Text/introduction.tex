@@ -1,6 +1,5 @@
 \chapter{Introduction}
 \section{Structure-based drug discovery principles}
-%talking about small drug discovery, not all drug discovery
 Small molecule drug design and development is an inventive process of finding new medicines.
 This complex task can be divided into smaller $\text{parts}^{\cite{Blass2015BasicDevelopment}}$. 
 The first major stage, drug discovery, consists of all the experimental and computational studies designed to move a program from the initial identification of a biological target to the identification of a compound with the potential to be clinically relevant.
@@ -9,12 +8,9 @@ This stage can be broken down into several phases:
     \item \textbf{Target discovery}\\
     One of the key stages is to choose the right target which can be manipulated to influence certain biochemical processes while not affecting the others.
     If the function of the target is defined only hypothetically, the validation is required to understand the link between it and phenotypic traits of the disease of interest.
-    
     \item \textbf{Lead discovery}\\
     Once a target has been identified and validated, the biological screening of large libraries of compounds is conducted to discover multiple drug candidates.
-    The lead discovery stage will be discussed in more detail further.
-    %referencing before labeling
-    
+    The lead discovery stage will be discussed in more detail further in Section \ref{lead_disc}.
     \item \textbf{Lead optimization}\\
     After the initial identification of leads, they can modified chemically to achieve improvements of  affinity, selectivity, mode of action, synthesizability and \acrshort{admet} (\acrlong{admet})-properties.
     Since there are many ways to optimize the compound, this step is cyclic and time-consuming. Finally, the affinity of \glqq original hits\grqq, which is very low, increases by several orders of magnitude.
@@ -49,16 +45,15 @@ The candidate must be proven efficient and safe.\\
 %     \item Phase I clinical traits
 % \end{enumerate}
 
-\section{Lead discovery stage}%\label{lead_disc}
+\section{Lead discovery stage}\label{lead_disc}
 
 To identify compounds which can be utilized in clinical setting, two general methods are applied, physical \acrlong{hts} (\acrshort{hts}) and computer-aided drug-design.
 Since \acrshort{hts} is expensive and takes more time, money and resources than \textit{in silico }screening, it is common approach to select small subset of molecules from large libraries by means of computational methods - by virtual screening, and after that test them in physical \acrshort{hts}.
 The use of computers in drug discovery makes the process of candidate search more quick and cost-efficient.\\
 
-With respect to virtual screening, there are two different techniques: ligand-based and structure-based. The first one uses similarity model
+With respect to virtual screening, there are two different techniques: ligand-based and structure-based.
+The first one uses similarity model or \acrlong{qsar} (\acrshort{qsar}) to search for possible ligands and does not need structure of a target, but a known ligand as a template.
 %chemical and pharmacofore similarity
-or \acrlong{qsar} (\acrshort{qsar}) to search for possible ligands and needs
-%needs what? applied when structure is unknown
 Structure-based techniques, in contrast, try to simulate the physics of protein-ligand binding and calculate a quantitative score intended to correlate with the free energy of binding, requiring a target structure but not target-specific bioactivity data.
 Structure-based methods include molecular dynamics and computational $\text{docking}^{\cite{Graff2020AcceleratingLearning}}$. Further, \acrshort{qsar} and molecular docking will be considered in detail in this work.\\
 
@@ -259,6 +254,14 @@ In a number of works, the construction of an iterative algorithm has been report
 For instance, Deep $\text{Docking}^{\cite{Gentile2020DeepDiscovery}}$ (\acrshort{dd}), a platform which employs \acrshort{qsar} deep models trained on docking scores to iteratively predict the docking outcome for all entities in the library and put away unfavorable molecules, has been presented.
 Authors had chosen Morgan fingerprints as features, and had constructed the pipeline in the following way: at initial step, the training subset is docked into the target; in all the rest of the steps, docked molecules are divided into 'hits' and 'non-hits' according to the score cut-off, the \acrshort{dl} model is retrained on the received information and predict docking outcomes on the all entities of the library, and the predefined number of molecules selected randomly from predicted 'hits' and docked in order to augment the training set.\\
 
-Another example of iterations usage is a $\text{paper}^{\cite{Graff2020AcceleratingLearning}}$ describing the application of the Bayesian statistics for docking hits search. \\
+Another example of iterations usage is a $\text{paper}^{\cite{Graff2020AcceleratingLearning}}$ describing the application of the Bayesian optimization technique for docking hits search.
+This approach uses so called acquisition functions.
+They define docking for which molecules should be performed on the next iteration.
+Authors had tested several types of acquisition functions, but the most simple, greedy acquisition function had been estimated to be the most effective in exploring docking hits
+(greedy acquisition function selects the molecules which have the most negative docking scores for docking).
+The active learning algorithm was utilized to docking hits prioritizing in datasets of various sizes: from Enamine 10k (10,540 compounds) to ultra-large datasets used in large docking $\text{campaign}^{\cite{Lyu2019Ultra-largeChemotypes}}$ by Lyu et al (99.5 million molecules).
+A work with the ultra-large library is of the greatest interest: if the batch size is 0.4\%, the message-passing neural network (\acrshort{mpn}) model finds 87.9\% of the top-50000 (ca. top-0.05\%) scores after exploring 2.4\% of the total pool, NN - 74.7\% and random forest - 71.4\%.\\
+
+The information about another researches is given in Table \ref{rel}.
 
 \input{Tables/table1}
