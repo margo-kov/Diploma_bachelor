@@ -1,17 +1,23 @@
 \chapter{Conclusion}
 
-The work aimed to reduce the time required for molecular docking by throwing out the molecules which are less prone to binding to a target. The results of this work are listed below:
+The work aimed to reduce the time required for molecular docking by throwing out 
+the molecules which are less prone to binding to a target. The results of this work 
+are listed below:
 
 \begin{itemize}
     \item Performance of regressors and classifiers trained on the Morgan fingerprints with default parameters have been analysed.
     Results have indicated that higher recall was achieved when working with regressors.
     \item Different parameters (radius, size) for the Morgan fingerprint have been utilized in predictions.
-    Best recall have showed regressors trained on Morgan fingerprints with default parameters.
+    Best recall have showed regressors trained on Morgan fingerprints with default 
+parameters.
     \item Morgan fingerprints with default parameters have been compared with atom pairs fingerprints.
-    Models trained on these fingerprints have had comparable results, so further work have been done using Morgan fingerprints with radius=2 and size=2048.
+    Models trained on these fingerprints have had comparable results, so further 
+work have been done using Morgan fingerprints with radius=2 and size=2048.
     \item Iterative algorithm with various approaches to train set augmentation ("add" or "noadd") and complex model creation ("LastModel", "MeanRank", "TopFromEveyModel") has been developed.
     \item The percentage of hits discovered by the iterative algorithm with linear regression as a single model has been evaluated for all variations of the algorithm depending on the amount of iterations.
-    The algorithm with "MeanRank" complex model and "noadd" train set augmentation approach has turned out to be the one with the highest fraction of discovered hits.
+    The algorithm with "MeanRank" complex model and "noadd" train set augmentation 
+approach has turned out to be the one with the highest fraction of discovered hits.
     \item Iterative algorithm has been compared to docking.
-    The number of hits discovered with 4-fold reduction in time compared to exhaustive docking has been estimated as 80\%, with 10-fold reduction - 60\%.
+    The number of hits discovered with 4-fold reduction in time compared to exhaustive 
+docking has been estimated as 80\%, with 10-fold reduction - 60\%.
 \end{itemize}
