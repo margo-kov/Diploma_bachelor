@@ -8,3 +8,6 @@ format:
 		cat /tmp/foldpy.tmpfile > "$$file" && rm /tmp/foldpy.tmpfile; \
 		done \
 	)
+
+build:
+	pdflatex main.tex && rm *.{glo,ist,out,aux,toc,lot,lof,acn,log} && mv main.pdf Diploma.pdf
