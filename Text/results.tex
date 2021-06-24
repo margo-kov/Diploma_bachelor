@@ -57,12 +57,12 @@ Changing the radius of the fingerprints means encoding larger substructures  in 
 Analysis of the quality of predictors trained on the Morgan fingerprints with radius 2 or 3 and size 2048 or 4096 revealed, that default parameters are still the best for prediction.
 %Comparing radius 2 and 3 and size 2048 and 4096
 \hfill\break
-\subsection{Type of fingerprints}
+\subsection{Types of fingerprints}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Images/MorganVSAtomPairs.jpg}
-    \caption{Comparison of some models trained on Morgan and Atom pair fingerprints}
+    \caption{Comparison of some models trained on Morgan and Atom pair fingerprints (4eiy)}
     \label{MvsAP}
 \end{figure}
 
@@ -151,16 +151,32 @@ It allows to confirm the assumption about greater variety of models trained in i
 \subsection{Comparison of the iterative algorithm with exhaustive docking}
 
 As already mentioned above, iterative algorithm shows best performance with "noadd" train set acquisition strategy and "MeanRank" complex model.
-The comparison between the iterative algorithm, with best parameters, with docking or linear regression as a simple model, is shown on Fig. \ref{best}. 
+The comparison between the iterative algorithm, with best parameters, with docking,  linear regression or dummy random regressor as a simple model, is shown on Fig. \ref{best}. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = \linewidth]{Images/MainResult.jpg}
+    \includegraphics[width = \linewidth]{Images/4eiyPercentageOfHits.jpg}
     \caption{Best performing variation of iterative algorithm compared with docking}
     \label{best}
 \end{figure}
+
 
 The graph shows that if the size of docked molecules reaches 25\% of the set, then the number of hits predicted by linear regression and docking differs by less than 3\%, what can be considered as an insignificant loss of predictive ability.
 It is also possible to compare the efficiency and spent time for docking and an iterative algorithm based on linear regression.
 Since the prediction time by linear regression is negligible compared to the docking time, it can be neglected when estimating the time spent. 
 Hence, 4-fold reduction of time allows to receive 85\% of docking hits and 10-fold reduction - 60\% of them.
+
+\begin{figure}
+\centering
+\begin{subfigure}{\textwidth}
+\includegraphics[width = 0.95\linewidth]{Images/4eiyScoresBest.jpg}
+\caption{Mean scores of predicted hits}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+\includegraphics[width=0.95\linewidth]{Images/4eiyDerivative.jpg}
+\caption{Derivative of the percentage of docking hits depending on docked molecules}
+\end{subfigure}
+\caption{Comparison of linear regression algorithm with baselines}
+\label{tsne}
+\end{figure}
+
