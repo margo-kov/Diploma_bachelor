@@ -6,13 +6,14 @@ The first major stage, drug discovery, consists of all the experimental and comp
 This stage can be broken down into several phases:
 \begin{enumerate}
     \item \textbf{Target discovery}\\
-    One of the key stages is to choose the right target which can be manipulated to influence certain biochemical processes while not affecting the others.
+    Every drug discovery process begins with the selection of a disease to treat.
+    Knowledge about biochemistry or genetic of the disorder helps to focus on the certain target (e.g. enzyme or receptor).
     If the function of the target is defined only hypothetically, the validation is required to understand the link between it and phenotypic traits of the disease of interest.
     \item \textbf{Lead discovery}\\
     Once a target has been identified and validated, the biological screening of large libraries of compounds is conducted to discover multiple drug candidates.
     The lead discovery stage will be discussed in more detail further in Section \ref{lead_disc}.
     \item \textbf{Lead optimization}\\
-    After the initial identification of leads, they can modified chemically to achieve improvements of  affinity, selectivity, mode of action, synthesizability and \acrshort{admet} (\acrlong{admet})-properties.
+    After the initial identification of leads, they can modified chemically to achieve improvements of  affinity, selectivity, mode of action, synthesizability and \acrshort{admet} (\acrlong{admet})-properties.  
     Since there are many ways to optimize the compound, this step is cyclic and time-consuming. Finally, the affinity of \glqq original hits\grqq, which is very low, increases by several orders of magnitude.
 \end{enumerate}
 
@@ -85,12 +86,17 @@ Also, Pfizer's "Rule of 3/75" has been described which states that compounds wit
     \item a ClogP of $\leq$ 3;
     \item topological polar surface area (TPSA) $\ge$ 75
 \end{itemize}
-have the best chances of being well tolerated from a safety perspective in vivo.
-\hfill\break\\
+have the best chances of being well tolerated from a safety perspective in vivo.\\
+
+A number of conditions not mentioned above, are also should be met: there are, for example, cell permeability, solubility (it is crucial in dissolution and absorption processes) or, for central neural system compounds - brain/blood $\text{partitioning}^{\cite{Jorgensen2004TheDiscovery}}$.
+These properties are the subjects of pharmacokinetics - the study of the
+time course of drug absorption, distribution, metabolism, and $\text{excretion}^{\cite{Atkinson2009CHAPTERPHARMACOKINETICS}}$. Sometimes toxicity is also considered, yelding \acrshort{admet}. \\
+
 Compounds are gathered in libraries, many of which are freely available online.
+Some of them, like $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$, contain commercially available compounds, while others, like ChemBL
 The number of purchasable items in these libraries which can be examined in drug design has grown significantly in recent years.
-For example, $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$ is a free database of commercially available compounds that in its current version contains nearly two billions of small molecules, while in $\text{2015}^{\cite{Sterling2015ZINCEveryone}}$ the library comprised roughly 120 million drug-like molecules.
-\hfill\break\\
+For example, $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$ is a free database of commercially available compounds that in its current version contains nearly two billions of small molecules, while in $\text{2015}^{\cite{Sterling2015ZINCEveryone}}$ the library comprised roughly 120 million drug-like molecules.\\
+
 There is a common way to store information about molecules compound libraries.
 For example, \acrshort{smiles} notation is often used.\\
 
@@ -110,12 +116,11 @@ This work was important because of several ideas:
 \end{itemize}
 
 The introduction of simple \acrshort{qsar} model had played a great role in understanding how molecular structure influences its biological affinity.
-The application of the method gave rise to vast amount of publications in wide range of $\text{areas}^{\cite{Debnath2005QuantitativeMillennium}}$: from plant growth regulation and metabolism to cytotoxicity and carciogenicity issues.
-\hfill\break\\
+The application of the method gave rise to vast amount of publications in wide range of $\text{areas}^{\cite{Debnath2005QuantitativeMillennium}}$: from plant growth regulation and metabolism to cytotoxicity and carciogenicity issues.\\
 
 Nowadays \acrshort{qsar} modeling is widely practiced in academy, industry, and government institutions around the world.
-\acrshort{qsar} models find broad application for assessing potential impacts of chemicals, materials, and nanomaterials on human health and ecological systems.
-\hfill\break\\
+\acrshort{qsar} models find broad application for assessing potential impacts of chemicals, materials, and nanomaterials on human health and ecological systems.\\
+
 Considering drug-receptor interaction models, traditional \acrshort{qsar} is receptor-independent, what means that only ligand data is handled.
 The main assumption in \acrshort{qsar} is that every property of a molecule is a function of the data derived from its structure.
 \hfill\break\\
@@ -240,15 +245,31 @@ The process of generating atom pair fingerprints consist of several steps:
       Unlike other types of SF, descriptor-based scoring functions don't have mathematical functional form; they make use of machine-learning algorithms with different types of descriptors used as features. 
   \end{itemize}
 
+% Depending on the threshold set, an HTS campaign will always deliver active compounds, but it is the potential to optimize them into drug-like and information-rich lead series that is evidently far more important for the downstream success ofthe entities. -- > Ultra-large docking is aimed to find drug-like hits, which don't need to be optimized to be drug-like.
+
 Usually, docking is implemented in an exhaustive style: the binding affinities of all molecules in the library are assessed.
 Therefore, a considerable part of docking time is spent on working with low-scoring molecules.
-The situation is getting worse as docking libraries have been growing exponentially over the past decade; for example, ZINC, a popular database of commercially available compounds for virtual screening contained roughly 1 billion molecules in $2020^{\cite{Irwin2020ZINC20Discovery}}$, which is eight times more than in $2015^{\cite{Sterling2015ZINCEveryone}}$.
-With an increase of libraries' sizes, computational costs for screening campaigns have become beyond imagination (e.g.,  475 CPU-years in case of \cite{Gorgulla2020AnScreens}).
+The situation is getting worse as docking libraries have been growing exponentially over the past decade; for example, ZINC, a popular database of commercially available compounds for virtual screening contained roughly 1 billion molecules in $2020^{\cite{Irwin2020ZINC20Discovery}}$, which is eight times more than in $2015^{\cite{Sterling2015ZINCEveryone}}$.\\
+
+Why, in fact, libraries for docking campaign have become ultra-large?
+One reason is that larger libraries allow to examine larger area of chemical space which may result in discovering promising chemotype. 
+As have been shown $\text{recently}^{\cite{Lyu2019Ultra-largeChemotypes}}$, docking performance typically improves with the library size.  
+The other cause is related to the fact that initial hits should go through expensive and lingering process of chemical optimization in order to become lead-like.
+That means that they should possess high binding affinities (which results in lower dosage and weaker off-target effects) while having appropriate \acrshort{admet} properties.
+The larger the docking library, the higher th possibility to find a compound which needs less optimization or doesn't need it at all.
+Hence, it may be less time-consuming to discover hits which don't need optimization through the ultra-large docking campaign than go through numerous cycles of chemical optimization.
+For instance, in ultra-large screening campaign exploiting VirtualFlow $\text{algorithm}^{\cite{Gorgulla2020AnScreens}}$, an inhibitor with nanomolar activity has been identified without any chemical optimization.\\
+
+Thereby, with an increase of libraries' sizes, computational costs for screening campaigns have become beyond imagination (e.g.,  475 CPU-years in case of \cite{Gorgulla2020AnScreens}).
 Thus, new strategies must be applied to diminish the computational costs in screening campaigns.
-One of the possible solutions is to combine classic molecular docking with \acrshort{qsar} modelling in order to remove molecules which are, according to \acrshort{qsar} analysis, less likely to bind the target from screening campaigns.\\
+One of the possible solutions is to combine classic molecular docking with \acrshort{qsar} modelling in order to remove molecules which are, according to \acrshort{qsar} analysis, less likely have an appropriate docking score, from screening campaigns.\\
 
 \section{Related works}
-% Surprisingly, first works devoted to the docking acceleration, used deep learning (DL) methods without comparing them with less sophisticated models. (\cite{Morrone2020CombiningApproach}, \cite{Jastrzebski2020EmulatingScreening}).\\
+
+Machine learning is not the only way to accelerate docking.
+For example, there have been a case of distributed algorithm creation, in the work of Gorgulla et $\text{al}^{\cite{Gorgulla2020AnScreens}}$. 
+The main feature of this algorithm, named VirtualFlow, is its linear scaling behaviour: in other words, the acceleration is linear in the number of cores.
+However, the issue of enormous computational resources usage still exists, and the only way to overcome the problem is to employ machine learning in docking campaign.\\
  
 In a number of works, the construction of an iterative algorithm has been reported.
 For instance, Deep $\text{Docking}^{\cite{Gentile2020DeepDiscovery}}$ (\acrshort{dd}), a platform which employs \acrshort{qsar} deep models trained on docking scores to iteratively predict the docking outcome for all entities in the library and put away unfavorable molecules, has been presented.
@@ -262,6 +283,13 @@ Authors had tested several types of acquisition functions, but the most simple, 
 The active learning algorithm was utilized to docking hits prioritizing in datasets of various sizes: from Enamine 10k (10,540 compounds) to ultra-large datasets used in large docking $\text{campaign}^{\cite{Lyu2019Ultra-largeChemotypes}}$ by Lyu et al (99.5 million molecules).
 A work with the ultra-large library is of the greatest interest: if the batch size is 0.4\%, the message-passing neural network (\acrshort{mpn}) model finds 87.9\% of the top-50000 (ca. top-0.05\%) scores after exploring 2.4\% of the total pool, NN - 74.7\% and random forest - 71.4\%.\\
 
-The information about another researches is given in Table \ref{rel}.
+A very recent article, introducing non-iterative docking acceleration algorithm, Lean-Docking, was presented by Berenger et $\text{al}^{\cite{Berenger2021Lean-Docking:Docking}}$. 
+The authors have trained a regressor (L2-regularised support vector regressor) to predict docking scores from counted atom pairs fingerprints. 
+According to the paper, initial docking of randomly selected 10,000 compounds and the following training of linear \acrshort{svr} allows to cut down the docking time by 4 times (as long as top-25\% of molecules according to predicted score), while preserving almost all docking hits. 
+Several docking programs have been examined: CCDC Gold, AutoDock-Vina, FRED, Glide and MOE. 
+Apart from the advantage of docking acceleration, method has a serious drawback: there are some combinations of docking programs and protein binding sites which are amenable to modelling.  \\
+
+
+Brief information about machine-learning based docking acceleration algorithms is given in Table \ref{rel}.
 
 \input{Tables/table1}
