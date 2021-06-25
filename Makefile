@@ -1,6 +1,10 @@
 SHELL := bash
+DOCNAME=main
 
-.PHONY = format 
+all: report
+
+.PHONY = format clean
+
 format:
 	(\
 		for file in $$(find -name "*.tex"); do \
@@ -9,5 +13,16 @@ format:
 		done \
 	)
 
-build:
-	pdflatex main.tex && rm *.{glo,ist,out,aux,toc,lot,lof,acn,log} && mv main.pdf Diploma.pdf
+report:
+	pdflatex $(DOCNAME).tex
+	bibtex $(DOCNAME).aux
+	pdflatex $(DOCNAME).tex
+	pdflatex $(DOCNAME).tex
+	mv main.pdf Diploma.pdf
+
+view: report clean
+	evince Diploma.pdf
+
+clean:
+	rm -f *.acn *.aux *.bbl *.blg *.dvi *.fdb_latexmk *.fls *.glo *.ist *.log *.lot *.out *.toc *.lof
+
