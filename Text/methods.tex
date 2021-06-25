@@ -103,13 +103,6 @@ Besides, classifiers were trained on different types of binarised scores dependi
 
 \section{Iterative algorithm development}
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.72]{Images/image1.png}
-    \caption{Two ways of treating the train set in iterative algorithm}
-    \label{TrainSetSelection}
-\end{figure}
-
 In iterative algorithms, only regression methods were used.
 The pipeline of the algorithm consists of the following steps:
 \begin{enumerate}
@@ -122,6 +115,13 @@ The pipeline of the algorithm consists of the following steps:
     \item Steps 2-5 are repeated until the predetermined number of iteration is reached.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.72]{Images/image1.png}
+    \caption{Two ways of treating the train set in iterative algorithm}
+    \label{TrainSetSelection}
+\end{figure}
+
 \subsection{Train set selection}
 There are two ways to update train dataset from iteration to iteration (Fig. \ref{TrainSetSelection}).
 On the one hand, it is profitable to make use of all the docked molecules, because more information is gathered.
@@ -132,14 +132,6 @@ Both approaches were tested within the iterative algorithms.\\
 
 \subsection{Complex model creation}
 
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.8]{Images/image2.png}
-    \caption{Types of complex model}
-    \label{ComplexModels}
-\end{figure}
-
 If there are several ML models available, it is possible to combine them somehow to create a complex model.
 Three types of complex models were employed in the algorithm (Fig. \ref{ComplexModels}):
 \begin{itemize}
@@ -149,7 +141,6 @@ Three types of complex models were employed in the algorithm (Fig. \ref{ComplexM
     \item \textbf{Mean Rank}: for each compound, the positions in the ratings of all models are averaged; the k\% of the compounds with the smallest average positions are handled as hits.
 \end{itemize}
 
-
 \section{Linear model visualisation}
 If complex model is composed of linear regressions, the coefficients of single models can be visualised with help of t-SNE, t-distributed stochastic neighbor embedding.
 This visualisation can help to analyse whether single models in the iterative algorithm are diverse or not. \\
@@ -157,3 +148,9 @@ This visualisation can help to analyse whether single models in the iterative al
 The coefficients of linear regression models were normalised so the sum of their squares was equal 1.
 TSNE algorithm from scikit-learn library was utilised to project the 2048-dimensional space of coefficients to 2D space. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Images/image2.png}
+    \caption{Types of complex model}
+    \label{ComplexModels}
+\end{figure}

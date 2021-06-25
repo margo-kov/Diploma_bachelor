@@ -1,0 +1,35 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}|l|r|r|r|r|r|@{}}
+\hline
+\multicolumn{1}{|c|}{}                                 & \multicolumn{1}{c|}{}                                & \multicolumn{2}{c|}{\textbf{recall\_score}}     & \multicolumn{2}{c|}{\textbf{time}}              \\ \cline{3-6} 
+\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{model}}} & \multicolumn{1}{c|}{\multirow{-2}{*}{\textbf{type}}} & \multicolumn{1}{c|}{\textbf{4eiy}} & \multicolumn{1}{c|}{\textbf{5zty}} & \multicolumn{1}{c|}{\textbf{4eiy}} & \multicolumn{1}{c|}{\textbf{5zty}} \\ \hline
+RidgeCV & regressor & 0.14700 & 0.11150 &   00:04:23 &   00:00:19       \\ \hline
+\begin{tabular}[c]{@{}l@{}}LinearRegression\\ (weight=100)\end{tabular}                                              & regressor                                                                    & 0.14375                           & 0.03575                           &   00:02:37         &   00:00:17          \\ \hline
+\begin{tabular}[c]{@{}l@{}}LinearRegression\\ (weight=50)\end{tabular}                                                & regressor                                                                    & 0.14375                           & 0.03575                           &   00:02:43          &   00:00:17          \\ \hline
+\begin{tabular}[c]{@{}l@{}}LinearRegression\\ (weight=20)\end{tabular}                                               & regressor                                                                    & 0.13900                           & 0.03575                           &   00:02:33        &   00:00:17          \\ \hline
+\begin{tabular}[c]{@{}l@{}}LinearRegression\\ (weight=10)\end{tabular}                                                & regressor                                                                    & 0.13475                           & 0.03575                           &   00:02:19          &   00:00:16        \\ \hline
+Ridge                                                                          & regressor                                                                    & 0.13400                           & 0.10000                           &   00:03:57          &   00:00:15        \\ \hline
+LinearSVR                                                                      & regressor                                                                    & 0.13350                           & 0.10125                           &   00:00:41          &   00:00:13            \\ \hline
+LinearRegression                                                               & regressor                                                                    & 0.13263                           & 0.09925                           &   00:03:54       &   00:00:16        \\ \hline
+LassoCV                                                                        & regressor                                                                    & 0.13250                           & 0.13150                           &   00:09:25       &   00:01:16        \\ \hline
+RandomForestRegressor                                                          & regressor                                                                    & 0.12475                           & 0.10600                           &   00:07:23         &   00:03:45         \\ \hline
+KNeighborsRegressor                                                            & regressor                                                                    & 0.09450                           & 0.07125                           &   00:05:18        &   00:01:08        \\ \hline
+\begin{tabular}[c]{@{}l@{}}KNeighborsRegressor\\ (1 neighbour, metric=jaccard)\end{tabular}                                  & regressor                                                                    & 0.07775                           & 0.05875                           &   00:02:15         &   00:01:29         \\ \hline
+DecisionTreeRegressor                                                          & regressor                                                                    & 0.07575                           & 0.05075                           &   00:03:41          &   00:00:17         \\ \hline
+DecisionTreeClassifier                                                         & classifier                                                                   & 0.06715                           & 0.00000                           &   00:00:44        &   00:00:31          \\ \hline
+\begin{tabular}[c]{@{}l@{}}KNeighborsClassifier\\ (1 neighbour)\end{tabular}                                              & classifier                                                                   & 0.04576                           & 0.05473                           &   00:01:12        &   00:01:14         \\ \hline
+RandomGaussianRegressor                                                        & regressor                                                                    & 0.03400                           & 0.02450                           &   00:01:19         &   00:00:11         \\ \hline
+RandomUniformRegressor                                                         & regressor                                                                    & 0.02300                           & 0.01975                           &   00:01:19        &   00:00:13             \\ \hline
+KNeighborsClassifier                                                           & classifier                                                                   & 0.00642                           & 0.00268                           &   00:03:45            &   00:01:15          \\ \hline
+RandomForestClassifier                                                         & classifier                                                                   & 0.00000                           & 0.00000                           &   00:02:07        &   00:00:21          \\ \hline
+Lasso                                                                          & regressor                                                                    & 0.00000                           & 0.00000                           &   00:02:40          &   00:00:13        \\ \hline
+\end{tabular}
+\caption{Recall score and time spent by several machine learning algorithms trained on 8,000 molecules (Morgan fingerprints, radius=2 and size=2048)}
+\label{recalls}
+\end{table}
+\newpage

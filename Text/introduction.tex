@@ -1,8 +1,8 @@
 \chapter{Introduction}
 \section{Structure-based drug discovery principles}
-Small molecule drug design and development is an inventive process of finding new medicines.
-This complex task can be divided into smaller $\text{parts}^{\cite{Blass2015BasicDevelopment}}$. 
-The first major stage, drug discovery, consists of all the experimental and computational studies designed to move a program from the initial identification of a biological target to the identification of a compound with the potential to be clinically relevant.
+Small molecule drug design and development is an inventive process of finding new medicines. 
+It involves a lot of investigation steps (which are presented on Fig.\ref{DrugCycle}) and can be divided into smaller $\text{parts}^{\cite{Blass2015BasicDevelopment}}$. 
+The first major stage, drug discovery, consists of all the experimental and computational studies which start at the identification of a biological target and aim to obtain a clinically relevant compound.
 This stage can be broken down into several phases:
 \begin{enumerate}
     \item \textbf{Target discovery}\\
@@ -60,40 +60,42 @@ Structure-based methods include molecular dynamics and computational $\text{dock
 
 \section{Small molecules and databases}
 
-One of the significant questions is where to search candidates for lead discovery stage, as long as chemical space is almost infinite; indeed, it was $\text{estimated}^{\cite{Bohacek1996ThePerspective}}$ that the number of molecules containing 30 heavy atoms (or non-hydrogens) outweighs $10^{60}$.
+One of the significant questions is where to search candidates for lead discovery stage, as long as chemical space is almost infinite; indeed, it was $\text{estimated}^{\cite{Bohacek1996ThePerspective}}$ that the amount of compounds containing 30 heavy atoms (or non-hydrogens) outweighs $10^{60}$.
 Usually, potential leads are searched among so called "small molecules".
 Currently, this term typically implies an organic compound whose molecular weight is less than roughly 1000 $\text{Da}^{\cite{Gilson2010AnUsers}}$.
 Such compounds may be chemically stable and spread through the body to reach a targeted protein after being injected or ingested.
 However, molecular weight is not the only criteria for drug-like molecules.
-For example, Lipinski's rule  of $5^{\cite{Blass2015BasicDevelopment}}$, suggests that drug-like compounds will have:
+For example, Lipinski's rule  of $5^{\cite{Blass2015BasicDevelopment}}$, suggests that drug-like molecules should have:
 \begin{itemize}
-    \item a molecular weight lower than 500;
-    \item a logP (octanol-water partition coefficient, or lipophilicity) below 5;
+    \item a molecular weight (M) lower than 500 Da;
+    \item an octanol-water partition coefficient, or lipophilicity, or logP below 5;
     \item less than 5 hydrogen bond donors;
     \item less tan 10 hydrogen bond acceptors;
     \item less than 10 rotatable bonds.
 \end{itemize}
-Many related rules have been subsequently modified and proposed as the "Rule-of-Three", which defines fragment properties with:
+
+There are a number of different rules besides Rule of Five. For example, its modification for fragment-based drug discovery, Rule of Three, states that 
+compounds should have:
 \begin{itemize} 
     \item an average molecular weight $\leq$ 300 Da;
-    \item a calculated partition coefficient (Clog P) $\leq$ 3;
+    \item a calculated partition coefficient, or Clog P $\leq$ 3;
     \item the number of hydrogen bond donors $\leq$ 3;
     \item the number of hydrogen bond acceptors $\leq$ 3;
     \item the number of rotatable bonds $\leq$ 3.
 \end{itemize}
-Also, Pfizer's "Rule of 3/75" has been described which states that compounds with
+Also, t Pfizer's "Rule of 3/75" claims that molecules with
 \begin{itemize}
     \item a ClogP of $\leq$ 3;
     \item topological polar surface area (TPSA) $\ge$ 75
 \end{itemize}
-have the best chances of being well tolerated from a safety perspective in vivo.\\
+have the best chances of passing clinical test and entering the market.\\
 
 A number of conditions not mentioned above, are also should be met: there are, for example, cell permeability, solubility (it is crucial in dissolution and absorption processes) or, for central neural system compounds - brain/blood $\text{partitioning}^{\cite{Jorgensen2004TheDiscovery}}$.
 These properties are the subjects of pharmacokinetics - the study of the
 time course of drug absorption, distribution, metabolism, and $\text{excretion}^{\cite{Atkinson2009CHAPTERPHARMACOKINETICS}}$. Sometimes toxicity is also considered, yelding \acrshort{admet}. \\
 
 Compounds are gathered in libraries, many of which are freely available online.
-Some of them, like $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$, contain commercially available compounds, while others, like ChemBL
+Some of them, like $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$, contain commercially available compounds, while others, like Enamine, consist of building blocks and chemical reactions to combine them, which significantly increases the size of the library.
 The number of purchasable items in these libraries which can be examined in drug design has grown significantly in recent years.
 For example, $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$ is a free database of commercially available compounds that in its current version contains nearly two billions of small molecules, while in $\text{2015}^{\cite{Sterling2015ZINCEveryone}}$ the library comprised roughly 120 million drug-like molecules.\\
 
@@ -118,8 +120,10 @@ This work was important because of several ideas:
 The introduction of simple \acrshort{qsar} model had played a great role in understanding how molecular structure influences its biological affinity.
 The application of the method gave rise to vast amount of publications in wide range of $\text{areas}^{\cite{Debnath2005QuantitativeMillennium}}$: from plant growth regulation and metabolism to cytotoxicity and carciogenicity issues.\\
 
-Nowadays \acrshort{qsar} modeling is widely practiced in academy, industry, and government institutions around the world.
-\acrshort{qsar} models find broad application for assessing potential impacts of chemicals, materials, and nanomaterials on human health and ecological systems.\\
+Nowadays wider applications have been found for \acrshort{qsar} $\text{modeling}^{\cite{Golbraikh2017PredictiveAssessment}}$.
+It has become one of methods used in drug discovery on the lead optimization step.
+QSAR is employed for predicting drug-like properties of screening hits or assessing potential impacts of chemicals on human health and ecology.
+ \\
 
 Considering drug-receptor interaction models, traditional \acrshort{qsar} is receptor-independent, what means that only ligand data is handled.
 The main assumption in \acrshort{qsar} is that every property of a molecule is a function of the data derived from its structure.
