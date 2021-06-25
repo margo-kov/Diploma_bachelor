@@ -90,7 +90,7 @@ results (Fig. \ref{MvsAP}), and further work has been done using Morgan fingerpr
 Linear regression has been chosen as a single model for an iterative algorithm. 
 
 It was one of the best performing models during the analysis, it was the quickest 
-one in training and prediction, and results given by the linear regression can be 
+one in training and prediction, and results given by the linear regression can be easily 
 interpreted: according to the weight of each bit of the fingerprints it is possible 
 to suggest which chemical substructures play significant role in attraction/repulsion 
 between the binding site and a small molecule. 
@@ -113,7 +113,7 @@ of docking with effort=1 (Fig. \ref{linregVSdocking}).
 
 \subsection{Determination of the best parameters}
 
-\begin{figure}
+\begin{figure} % on this figure, you better change tot_num_of_iterations to batch_size
     \centering
     \includegraphics[width = \linewidth]{Images/LinregIterations.jpg}
     \caption{The portion of docking hits discovered by iterative algorithm depending on its parameters, the number of iterations and the amount of docked molecules}
@@ -123,7 +123,7 @@ Iterative algorithm with "add" and "noadd" train set augmentation strategies, "L
 "MeanRank" and "TopFromEveryModel" complex model types was tested. 
 Firstly, independent round of docking was utilized as a single model.
 The percentage of hits discovered by the algorithm based on docking can give the 
-upper bond for the effectiveness of the technique: no one machine learning model 
+upper bond for the effectiveness of the technique: no machine learning model 
 can distinguish between hits and non-hits better than docking. 
 Hereby, iterative algorithm reaches values of about 80\% with 25\% of docked molecules 
 when using docking as a single model, as seen at Fig \ref{docking}.\\
@@ -133,7 +133,7 @@ as effective if the fraction of discovered hits will not differ much from 80\% w
 25\% of docked molecules. 
 Examination of all variations of the iterative algorithm has led to the conclusion 
 that best performance gives the algorithm with "noadd" train set acquisition stratedy 
-and "MeanRank" complex model.\\
+and "MeanRank" complex model.\\ % it's better to reference a figure or a table here
 
 \begin{figure}[H]
     \centering
@@ -152,7 +152,7 @@ The fewer molecules are added during the iterations, the less significant is the
 difference between models.
 Thus, when number of iterations is big enough, models start to pick molecules in 
 the same area of chemical space, ommiting higher part of the hits.
-On the other hand, when all models are taught on the independent subsets of docked 
+On the other hand, when all models are trained on the independent subsets of docked 
 molecules, they show higher diversity.
 That means that models prioritize separate fields of chemical space, which allow 
 to gather more docking hits.\\
@@ -196,7 +196,7 @@ train set acquisition strategy and "MeanRank" complex model.
 The comparison between the iterative algorithm, with best parameters, with docking 
 or linear regression as a simple model, is shown on Fig. \ref{best}. 
 
-\begin{figure}[H]
+\begin{figure}[H] % you have a better version of this figure in your presentation -- with DummyPredictor also plotted
     \centering
     \includegraphics[width = \linewidth]{Images/MainResult.jpg}
     \caption{Best performing variation of iterative algorithm compared with docking}
