@@ -1,17 +1,23 @@
 \chapter{Methods}
 
-The pipeline of this work relies on the following steps:
-\begin{enumerate}
-    \item Library selection;
-    \item Fingerprints generation;
-    \item ML model selection;
-    \item Iterative algorithm building.
-\end{enumerate}
-All steps will be considered in detail in this chapter.
+% It's unclear what you mean by "the pipeline of this work ...", and you need to explain some additional things
+% I'd put it this way:
+% we need to construct an interative algorithm
+% for that, we need a good model trained on good data
+% here we'll describe, how we got our training data (-> docking in ICM and fingerprints in chemfp)
+% how we screened whether the model is good or not (metrics and baselines)
+% and screened iterative algorithm options (approaches and again metrics)
+% the rest of the chapter is fine, you just need to explain more in this paragraph
+The aim of current work is to construct an iterative algorithm.
+In order to build it, a model with good performance should be chosen.
+Before training, a data should be prepared, so molecular docking and fingerprints generation is to be done.
+Also, a criteria of "goodness" of the model should be established: the metric has to be picked, and baseline models to invent.
+Eventually, some hyperparameters of the algorithm should be screened in order to identify the combination which allows to obtain the largest number of docking hits. All steps will be considered in detail in this chapter.
 \section{Dataset selection}
 
 \acrshort{smiles} of drug-like molecules from ZINC20 library were taken as a dataset for this work with following rules: $200\ <\ \text{MW}\ <\ 500$, $\text{logP} < 5$.
 The distribution of number of compounds on their molecular weight and log P is showed on  Fig.\ref{zinc}.
+
 
 \begin{figure}[H]
     \centering
@@ -22,7 +28,7 @@ The distribution of number of compounds on their molecular weight and log P is s
 
 \section{Fingerprints generation}
 
-Morgan fingerprints were generated from \acrshort{smiles} (2048 bits in the fingerprint) using $\text{chemfp}^{\cite{Dalke2019TheProject}}$ 1.6.1 with following parameters:
+Morgan fingerprints were generated from \acrshort{smiles} (2048 bits in the fingerprint) using chemfp {\cite{Dalke2019TheProject}} 1.6.1 with following parameters:
 \begin{itemize}
     \item radius 2 or 3;
     \item 2048 or 4096 bits in the fingerprint;
@@ -34,7 +40,7 @@ Morgan fingerprints were generated from \acrshort{smiles} (2048 bits in the fing
 Atom pair fingerprints were generated with RDKit module, with 2048 bits in the fingerprint, chilarity not included.
 
 \section{Molecular docking}
-Docking was performed using ICM-Pro molecular modeling software.
+Docking was performed using ICM-Pro molecular modeling software (ver. 3.9.1).
 X-ray crystal structures of Human cannabinoid receptor 2 (CNR2) and adenosine receptor A2 (AA2AR) from \acrlong{pdb} (\acrshort{pdb}) were used.
 CNR2 models were prepared using structure with antagonist AM10257 at 2.8 A resolution (PDB ID 5ZTY), while for AA2AR models the structure with antagonist ZM241385 at 1.8 A resolution (PDB ID 4EIY) was taken.
 The structures were converted from \acrshort{pdb} coordinates to ICM objects using ICM-Pro conversion algorithm.\\
@@ -67,13 +73,14 @@ In this case docking hits were defined as top-1\% of all items in the set.\\
 
 \subsection{Reference models}
 To understand how great or poor the performance of the ML models is, two types of reference models were used.
-First model is second docking performed with effort=1 and it is supposed that it gives the upper bond: none ML model can outperform docking.
-The lower bound is taken from dummy regressors and classifiers: model returning random values according to normal or uniform distribution was utilized as a dummy regressor, and a classifier which simply returns the most frequent class was chosen to be dummy classifier.\\
+First model is second docking performed with effort=1 and it is supposed that it gives gives the upper bond: none ML model can outperform docking. 
+Due to stochastic nature of sampling in ICM-Pro, it gives slightly different results every time, if the random seed is not fixed.
+The lower bound is taken from so-called "dummy" regressors and classifiers: model returning random values according to normal or uniform distribution was utilized as a dummy regressor, and a classifier which simply returns the most frequent class was chosen to be dummy classifier.\\
 
 \subsection{Classifiers vs Regressors}
 
 Firstly, both regression and classification models were examined.
-Regressors were taught on the docking scores, while for classifiers the scores were binarised: molecules were ranked according to their score, and top 0.5\%, 1\%, 2\% or 5\% of the dataset were considered further as docking hits.\\
+Regressors were trained on the docking scores, while for classifiers the scores were binarised: molecules were ranked according to their score, and top 0.5\%, 1\%, 2\% or 5\% of the dataset were considered further as docking hits.\\
 
 Recall and top-k\% score are two metrics convenient for comparison between regressors and classifiers.
 Indeed, it is possible to "transform" regressor into classifier: the cut-off may be established so k\% of the molecules with the best score are to become hits; after that transformation the calculated recall turns out to be equal to top-k\% score.
@@ -81,7 +88,7 @@ Thence, it was assumed in analysis that if the classifier's recall is lower than
 
 \subsection{Selection procedure}
 
-The following classifiers and regressors were tested:
+The following classifiers and regressors from the scikit-learn machine learning library were tested:
 \begin{itemize}
     \item Linear regression;
     \item Ridge (and RidgeCV);
@@ -106,7 +113,7 @@ Besides, classifiers were trained on different types of binarised scores dependi
 In iterative algorithms, only regression methods were used.
 The pipeline of the algorithm consists of the following steps:
 \begin{enumerate}
-    \item In the initial step, a predefined number of molecules are docked or taken from the list of already docked compounds to provide a test set;
+    \item In the initial step, a predefined number of molecules are "docked" (practically, taken from the list of already docked compounds) to provide a test set;
     \item The ML model is trained and integrated then into a complex model;
     \item The complex model predicts the docking outcome;
     \item The batch of molecules is docked: if the number of docking hits is larger than a predefined size, then the demanded number of hits are sampled;
@@ -137,7 +144,7 @@ Three types of complex models were employed in the algorithm (Fig. \ref{ComplexM
 \begin{itemize}
     \item \textbf{Last Model}: ML model from the latest iteration is treated as a complex model and used to predict docking outcomes.
     After the prediction, top-k\% of predicted scores become hits;
-    \item \textbf{Top from every model}: on the $\text{n}^{th}$ iteration, each model makes a prediction and top-(k/n)\% of predicted scores from each model constitute complex model's hits (repetitions are deleted);
+    \item \textbf{Top from every model}: on the $\text{n}^{th}$ iteration, each model makes a prediction and top-(k/n)\% of predicted scores from each model constitute complex model's hits (duplicates are deleted);
     \item \textbf{Mean Rank}: for each compound, the positions in the ratings of all models are averaged; the k\% of the compounds with the smallest average positions are handled as hits.
 \end{itemize}
 

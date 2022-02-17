@@ -1,7 +1,7 @@
 \chapter{Introduction}
 \section{Structure-based drug discovery principles}
 Small molecule drug design and development is an inventive process of finding new medicines. 
-It involves a lot of investigation steps (which are presented on Fig.\ref{DrugCycle}) and can be divided into smaller $\text{parts}^{\cite{Blass2015BasicDevelopment}}$. 
+It involves a lot of investigation steps (which are presented on Fig.\ref{DrugCycle}) and can be divided into smaller parts {\cite{Blass2015BasicDevelopment}}. 
 The first major stage, drug discovery, consists of all the experimental and computational studies which start at the identification of a biological target and aim to obtain a clinically relevant compound.
 This stage can be broken down into several phases:
 \begin{enumerate}
@@ -31,7 +31,7 @@ After lead optimization, several high-potency compounds should be selected as a 
 \begin{figure}
     \centering
     \includegraphics[scale = 0.4]{Images/Maveyraud.png}
-    \caption{Drug discovery cycle. Taken from \cite{Maveyraud2020ProteinDiscovery}}
+    \caption{Structure date drug discovery cycle. Taken from \cite{Maveyraud2020ProteinDiscovery}}
     \label{DrugCycle}
 \end{figure}
 
@@ -48,24 +48,24 @@ The candidate must be proven efficient and safe.\\
 
 \section{Lead discovery stage}\label{lead_disc}
 
-To identify compounds which can be utilized in clinical setting, two general methods are applied, physical \acrlong{hts} (\acrshort{hts}) and computer-aided drug-design.
-Since \acrshort{hts} is expensive and takes more time, money and resources than \textit{in silico }screening, it is common approach to select small subset of molecules from large libraries by means of computational methods - by virtual screening, and after that test them in physical \acrshort{hts}.
-The use of computers in drug discovery makes the process of candidate search more quick and cost-efficient.\\
+To identify compounds which can be utilized in clinical setting, two general methods are applied, physical \acrlong{hts} (\acrshort{hts}) and computer-aided drug-design (see e.g. \cite{Luxminarayan2019TheProcess}). 
+Since \acrshort{hts} is expensive and takes more time, money and resources than \textit{in silico }screening, it is common approach to select small subset of molecules from large libraries by means of computational methods -- by virtual screening, and after that test them in physical \acrshort{hts}.
+The use of computers in drug discovery makes the process of candidate search more quick and cost-efficient \cite{McInnes2007VirtualDiscovery}.\\
 
-With respect to virtual screening, there are two different techniques: ligand-based and structure-based.
-The first one uses similarity model or \acrlong{qsar} (\acrshort{qsar}) to search for possible ligands and does not need structure of a target, but a known ligand as a template.
+With respect to virtual screening, there are two different techniques: ligand-based and structure-based \cite{Blass2015BasicDevelopment}.
+The first one uses similarity model or \acrlong{qsar} (\acrshort{qsar}) to search for possible ligands and does not require a structure of a target protein, but a known ligand or set of ligands as a template, including their activity data.
 %chemical and pharmacofore similarity
 Structure-based techniques, in contrast, try to simulate the physics of protein-ligand binding and calculate a quantitative score intended to correlate with the free energy of binding, requiring a target structure but not target-specific bioactivity data.
-Structure-based methods include molecular dynamics and computational $\text{docking}^{\cite{Graff2020AcceleratingLearning}}$. Further, \acrshort{qsar} and molecular docking will be considered in detail in this work.\\
+Structure-based methods include molecular dynamics and computational docking {\cite{Graff2021AcceleratingLearning}}. Further, \acrshort{qsar} and molecular docking will be considered in detail in this work.\\
 
 \section{Small molecules and databases}
 
-One of the significant questions is where to search candidates for lead discovery stage, as long as chemical space is almost infinite; indeed, it was $\text{estimated}^{\cite{Bohacek1996ThePerspective}}$ that the amount of compounds containing 30 heavy atoms (or non-hydrogens) outweighs $10^{60}$.
+One of the significant questions is where to search candidates for lead discovery stage, as long as chemical space is almost infinite; indeed, it was estimated {\cite{Bohacek1996ThePerspective}} that the amount of compounds containing 30 heavy atoms (or non-hydrogens) outweighs $10^{60}$.
 Usually, potential leads are searched among so called "small molecules".
-Currently, this term typically implies an organic compound whose molecular weight is less than roughly 1000 $\text{Da}^{\cite{Gilson2010AnUsers}}$.
+Currently, this term typically implies an organic compound whose molecular weight is less than roughly 1000 Da {\cite{Gilson2010AnUsers}}.
 Such compounds may be chemically stable and spread through the body to reach a targeted protein after being injected or ingested.
 However, molecular weight is not the only criteria for drug-like molecules.
-For example, Lipinski's rule  of $5^{\cite{Blass2015BasicDevelopment}}$, suggests that drug-like molecules should have:
+For example, Lipinski's rule of 5 {\cite{Blass2015BasicDevelopment}}, suggests that drug-like molecules should have:
 \begin{itemize}
     \item a molecular weight (M) lower than 500 Da;
     \item an octanol-water partition coefficient, or lipophilicity, or logP below 5;
@@ -90,25 +90,25 @@ Also, t Pfizer's "Rule of 3/75" claims that molecules with
 \end{itemize}
 have the best chances of passing clinical test and entering the market.\\
 
-A number of conditions not mentioned above, are also should be met: there are, for example, cell permeability, solubility (it is crucial in dissolution and absorption processes) or, for central neural system compounds - brain/blood $\text{partitioning}^{\cite{Jorgensen2004TheDiscovery}}$.
+A number of conditions not mentioned above, are also should be met: there are, for example, cell permeability, solubility (it is crucial in dissolution and absorption processes) or, for central neural system compounds - brain/blood partitioning {\cite{Jorgensen2004TheDiscovery}}.
 These properties are the subjects of pharmacokinetics - the study of the
-time course of drug absorption, distribution, metabolism, and $\text{excretion}^{\cite{Atkinson2009CHAPTERPHARMACOKINETICS}}$. Sometimes toxicity is also considered, yelding \acrshort{admet}. \\
+time course of drug absorption, distribution, metabolism, and excretion {\cite{Atkinson2009CHAPTERPHARMACOKINETICS}}. Sometimes toxicity is also considered, yelding \acrshort{admet}. \\
 
 Compounds are gathered in libraries, many of which are freely available online.
-Some of them, like $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$, contain commercially available compounds, while others, like Enamine, consist of building blocks and chemical reactions to combine them, which significantly increases the size of the library.
+Some of them, like ZINC20 {\cite{Irwin2020ZINC20Discovery}}, contain commercially available compounds, while others, like Enamine, consist of building blocks and chemical reactions to combine them, which significantly increases the size of the library.
 The number of purchasable items in these libraries which can be examined in drug design has grown significantly in recent years.
-For example, $\text{ZINC20}^{\cite{Irwin2020ZINC20Discovery}}$ is a free database of commercially available compounds that in its current version contains nearly two billions of small molecules, while in $\text{2015}^{\cite{Sterling2015ZINCEveryone}}$ the library comprised roughly 120 million drug-like molecules.\\
+For example, ZINC20 {\cite{Irwin2020ZINC20Discovery}} is a free database of commercially available compounds that in its current version contains nearly two billions of small molecules, while in 2015 {\cite{Sterling2015ZINCEveryone}} the library comprised roughly 120 million drug-like molecules.\\
 
 There is a common way to store information about molecules compound libraries.
-For example, \acrshort{smiles} notation is often used.\\
+For example, \acrshort{smiles} notation is used: a simple human- and machine-readable representation of a molecular structure with no information about anything but molecular topology, sometimes called a 1D-structure of a molecule \cite{OskJonsdottir2005PredictionCandidates}.\\
 
 \section{QSAR models}
-One of the major computational tools in drug design is quantitative structure-activity relationship, \acrshort{qsar} - a method of mapping chemical structure to molecular $\text{properties}^{\cite{Polanski2009ReceptorInteractions}}$. 
-Some features, like molecular weight, can be calculated directly for any structure, synthesised or just virtual, while other characteristics, e.g. logP, should be measured only experimentally.
+One of the major computational tools in drug design is quantitative structure-activity relationship, \acrshort{qsar} -- a method of mapping chemical structure to molecular properties {\cite{Polanski2009ReceptorInteractions}}. 
+Some features, like molecular weight, can be calculated directly for any structure, synthesised or just virtual, while other characteristics, e.g. logP or affinity to a receptor, should be measured only experimentally.
 \acrshort{qsar} models attempt to predict these unknown properties based on the information from the molecules which have been already tested experimentally.
 Thus, accurate \acrshort{qsar} model can noticeably simplify the compound selection process, providing the information about their biological activity.\\
 
-The history of \acrshort{qsar} modelling started in 1964 with publication of the Hansch's et al. $\text{paper}^{\cite{Hansch1964--Structure}}$ dedicated to correlation between biological activity and chemical structure.
+The history of \acrshort{qsar} modelling started in 1964 with publication of the Hansch's et al. paper {\cite{Hansch1964--Structure}} dedicated to correlation between biological activity and chemical structure.
 This work was important because of several ideas:
 \begin{itemize}
 
@@ -118,25 +118,24 @@ This work was important because of several ideas:
 \end{itemize}
 
 The introduction of simple \acrshort{qsar} model had played a great role in understanding how molecular structure influences its biological affinity.
-The application of the method gave rise to vast amount of publications in wide range of $\text{areas}^{\cite{Debnath2005QuantitativeMillennium}}$: from plant growth regulation and metabolism to cytotoxicity and carciogenicity issues.\\
+The application of the method gave rise to vast amount of publications in wide range of areas {\cite{Debnath2005QuantitativeMillennium}}: from plant growth regulation and metabolism to cytotoxicity and carciogenicity issues.\\
 
-Nowadays wider applications have been found for \acrshort{qsar} $\text{modeling}^{\cite{Golbraikh2017PredictiveAssessment}}$.
+Nowadays wider applications have been found for \acrshort{qsar} modeling {\cite{Golbraikh2017PredictiveAssessment}}.
 It has become one of methods used in drug discovery on the lead optimization step.
-QSAR is employed for predicting drug-like properties of screening hits or assessing potential impacts of chemicals on human health and ecology.
- \\
+QSAR is employed for predicting drug-like properties of screening hits or assessing potential impacts of chemicals on human health and ecology (see e.g. \cite{Demchuk2011SAR/QSARPractice}). \\
 
 Considering drug-receptor interaction models, traditional \acrshort{qsar} is receptor-independent, what means that only ligand data is handled.
 The main assumption in \acrshort{qsar} is that every property of a molecule is a function of the data derived from its structure.
 \hfill\break\\
 \section{Molecular descriptors}
   In order to predict chemical properties, a relationship between the property of a molecule and the parameters which characterize its structure should be established.
-  To build this property, the molecules' structures should be converted to a convenient, numerical form - molecular descriptors.
-  $\text{In the Handbook of Molecular Descriptors}^{\cite{Todeschini2007MethodsChemistry}}$,
+  To build this property, the molecules' structures should be converted to a convenient, numerical form -- molecular descriptors.
+  In the Handbook of Molecular Descriptors ({\cite{Todeschini2007MethodsChemistry}}),
   molecular descriptor is defined as the final result of a logic and mathematical procedure which transforms chemical information encoded within a symbolic representation of a molecule into a useful number. \\
 %   One of the ways to represent molecules in chemoinformatics is as a vector; then molecules can be interpreted as points in the chemical space; their coordinates are then called descriptors.
 
-\noindent Descriptors should meet several $\text{criteria}^{\cite{
-Baskin2020IntroductionRussian}}$:
+\noindent Descriptors should meet several criteria {\cite{
+Baskin2020IntroductionRussian}}:
 \begin{itemize}
     \item invariant to atom and bonds renumbering;
     \item invariant to rotation and shift;
@@ -154,28 +153,28 @@ Also, it is preferable that descriptor:
 \end{itemize}
 
 \noindent Many different types of numerical descriptors are described in the literature. 
-Most popular molecular descriptors are 2D-descriptors, which derive from two-dimensional, also called topological, representation of a molecule, which defines the connectivity of atoms in the molecule in terms of the presence and nature of chemical $\text{bonds}^{\cite{Cherkasov2014QSARTo}}$. 
+Most popular molecular descriptors are 2D-descriptors, which derive from two-dimensional, also called topological, representation of a molecule, which defines the connectivity of atoms in the molecule in terms of the presence and nature of chemical bonds {\cite{Cherkasov2014QSARTo}}. 
 
 \subsection{Morgan/circular fingerprints}
-Also referred as extended-connectivity fingerprints, or $\text{ECFP}^{\cite{Rogers2010Extended-ConnectivityFingerprints}}$.
+Also referred as extended-connectivity fingerprints, or ECFP {\cite{Rogers2010Extended-ConnectivityFingerprints}}.
 One of the most common representations in the class of 2D fingerprints, which are computationally inexpensive and easy to interpret and visualize.
-The ECFP generation process has three sequential $\text{stages}^{\cite{Rogers2010Extended-ConnectivityFingerprints}}$:
+The ECFP generation process consists of three steps: {\cite{Rogers2010Extended-ConnectivityFingerprints}}:
 \begin{enumerate}
-    \item An initial assignment stage in which each non-hydrogen atom has an integer identifier assigned to it (All rules which are independent of atom numbering can be applied).
+    \item Initial one, in which each non-hydrogen atom has an numerical identifier assigned to it (All rules which are independent of atom numbering can be applied).
     These identifiers are gathered into a fingerprint set. 
-    \item An iterative updating stage in which each atom collects its own identifiers among with identifiers of its neighbours (excluding hydrogen atoms) into an array, sorted according to the current identifiers and the order of the bond order (single, double, triple, and aromatic), and a hash function is used to convert this array into a new integer identifier.
+    \item Iterative updating stage, where each atom collects its own identifiers among with identifiers of its neighbours (excluding hydrogen atoms) into an array, sorted according to the current identifiers and the order of the bond (single, double, triple, and aromatic), and a hash function is used to convert this array into a new integer identifier.
     The iteration is repeated a predefined number of times. As the process is repeated, the atom identifier represents a
     substructure of increasing size.
-    \item A duplicate identifier removal stage. Structural duplication is a situation when two different atoms contain information about identical structural regions of a molecule.
+    \item Duplicate identifier removal stage. Structural duplication is a situation when two different atoms contain information about the same substructures of a molecule.
     The hashed identifier generated for these two atoms will be different, even though they represent the same underlying structure.
     In order to avoid adding useless redundancy to the fingerprint.
     To identify such duplicates, each feature keeps track of the substructure it represents in a molecule.
-    Before the newly generated features from an iteration are appended to the fingerprint set, they are checked to see if any structural duplicates exist.
-    The removal of duplicates has the additional effect that, at some number of iterations, fewer features will be generated than at the previous iteration level, and at some larger number of iterations, no more new features will be generated.
+    Newly generated features are appended to the fingerprint set only if there are no structural duplicates.
+    There is an additional effect that removal of duplicates has: at a certain iteration, fewer features will be generated than at the previous level; at some point, no more new features will be generated.
 \end{enumerate}
     Finally, the list of identifiers is folded into a vector (2048-bit by default).
 \hfill\break\\
- The ECFP rule for generating initial identifiers is derived from the properties used in the Daylight atomic invariants $\text{rule}^{\cite{Weininger1989SMILES.Notation}}$:
+ The ECFP rule for generating initial identifiers is derived from the properties used in the Daylight atomic invariants rule {\cite{Weininger1989SMILES.Notation}}:
  \begin{itemize}
      \item number of nearest-neighbour non-hydrogen atoms;
      \item number of bonds attached to the atom (not including bonds to hydrogens);
@@ -183,12 +182,12 @@ The ECFP generation process has three sequential $\text{stages}^{\cite{Rogers201
      \item atomic mass;
      \item atomic charge;
      \item number of hydrogens connected to the atom;
-     \item is the atom in a ring (1) or not (0) - additional property, not included in Daylight atomic invariants rule.
+     \item is the atom in a ring (1) or not (0) -- additional property, not included in Daylight atomic invariants rule.
  \end{itemize}
  To create an integer identifier from this information, these values are hashed into a single 32-bit integer value.\\
  
  Depending on the number of iterations, different names age are given to fingerprints.
- For example, in the RDKit library default number of iterations in the Morgan fingerprints is 2, which corresponds to ECFP4, where 4 represents the \textit{diameter} of the atom environments considered.\\
+ For example, in the RDKit library default number of iterations in the Morgan fingerprints is 2, which corresponds to ECFP4, where 4 represents the \textit{diameter} of the atom environments considered \cite{Landrum2010RDKit:Cheminformatics}.\\
  
  Different hash functions can be chosen, but should meet special requirements: to map arrays of integers randomly and uniformly into the $2^{32}$-size space of all possible integers; without uniform coverage, the collision rate may increase, leading to a loss of information.
 
@@ -209,12 +208,14 @@ The process of generating atom pair fingerprints consist of several steps:
 \end{enumerate}
 
 \section{Molecular docking}
-  Structure-based method, named docking, requires a crystal structure of a target, obtained from NMR, cryo-electron microscopy or X-ray data.
+    In order to predict both small-molecule binding pose and binding energy to a target biomolecule, a structure-based method, named docking, is used.
+    It requires a 3D structure of a target, obtained either from experimentally: from NMR, cryo-electron microscopy or X-ray data, of computationally: using homology modelling or other protein fold prediction methods.
+    One of the possible applications of docking is, computational screening of large libraries to select molecules that bind a particular biomolecule.
   In principle, docking can screen virtual libraries of great size and diversity, selecting only the best-fitting molecules for synthesis and testing. 
   However, it has serious disadvantage: the technique has a high percentage of false-positive hits. 
-  Besides, docking cannot calculate the affinity of compounds $\text{accurately}^{\cite{Lyu2019Ultra-largeChemotypes}}$, still being an effective ranking tool.\\
+  Besides, docking cannot calculate the affinity of compounds accurately {\cite{Lyu2019Ultra-largeChemotypes}}, still being an effective ranking tool.\\
   
-  There are two classes of method needed for docking $\text{implementation}^{\cite{Du2016InsightsMethods}}$: the search algorithm, which is responsible for searching through different orientations, or poses, of a ligand in a binding pocket; and the scoring function, which estimates the binding affinities of poses.\\
+  There are two computational stages necessary for docking implementation {\cite{Du2016InsightsMethods}}: the ligand sampling algorithm, which is responsible for searching through different orientations, or poses, of a ligand in a binding pocket; and the scoring function, which estimates the binding affinities of poses. They often work together, accounting for scoring function value upon ligand sampling.\\
   
   Search algorithms must simultaneously be fast and cover chemical space effectively.
   If search space consists of all possible conformations, it is impossible to explore all of it with present computational power; on the contrary, ignoring some degrees of freedom can lead to inaccurate docking results.
@@ -222,13 +223,13 @@ The process of generating atom pair fingerprints consist of several steps:
   \begin{itemize}
       \item 
       Rigid-body: both ligand and target are treated as rigid body, and only rotational and transitional freedom is considered;
-      \item Flexible-ligand: protein flexibility still doesn't considered, but ligand flexibility does;
-      \item Flexible ligand-flexible-protein: both ligand and target are considered as flexible. One of the ways to take into consideration the target flexibility is to dock ligand into multiple fixed receptor $\text{conformations}^{\cite{Totrov2008FlexibleAlternative}}$;
+      \item Flexible-ligand: protein flexibility still doesn't considered, but ligand flexibility does; ligand flexibility includes rotation along rotatable bonds, and sometimes sampling of chiral centers and other stereoisomeric forms;;
+      \item Flexible ligand-flexible-protein: both ligand and target are considered as flexible. Due to exceptional computational complexity, it usually includes flexibility of multiple protein sidechains within putative ligand-binding pocket. One of the ways to take into consideration the target flexibility is to dock ligand into multiple fixed receptor conformations \cite{Totrov2008FlexibleAlternative};
   \end{itemize}
   
   Scoring functions (\acrshort{sf}) must predict binding free-energy accurate enough, so different types of physical interactions and entropic effects should be taken into account.
   However, current computational resources constrain the algorithm's complexity.
-  Thus, \acrshort{sf} make approximations in order to compromise between speed and accuracy. One can divide a wide range of scoring functions into four $\text{classes}^{\cite{Liu2015ClassificationFunctions}, \cite{Li2019AnDocking}}$:
+  Thus, \acrshort{sf} make approximations in order to compromise between speed and accuracy. One can divide a wide range of scoring functions into four classes {\cite{Liu2015ClassificationFunctions}, \cite{Li2019AnDocking}}:
   \begin{itemize}
         \item Empirical methods: the SF sums up the contributions of several terms, each related to energetic factor in protein-ligand binding.
         This terms might be "rewarding", such as hydrogen binding, or "penalties", e.g. frozen rotatable bonds.
@@ -253,41 +254,44 @@ The process of generating atom pair fingerprints consist of several steps:
 
 Usually, docking is implemented in an exhaustive style: the binding affinities of all molecules in the library are assessed.
 Therefore, a considerable part of docking time is spent on working with low-scoring molecules.
-The situation is getting worse as docking libraries have been growing exponentially over the past decade; for example, ZINC, a popular database of commercially available compounds for virtual screening contained roughly 1 billion molecules in $2020^{\cite{Irwin2020ZINC20Discovery}}$, which is eight times more than in $2015^{\cite{Sterling2015ZINCEveryone}}$.\\
+This is especially ineffective with respect to the fact that only several hundred top-scoring molecules will be experimentally screened afterwards.
+The situation is getting worse as docking libraries have been growing exponentially over the past decade; for example, ZINC, a popular database of commercially available compounds for virtual screening contained roughly 1 billion molecules in 2020 {\cite{Irwin2020ZINC20Discovery}}, which is eight times more than in 2015 {\cite{Sterling2015ZINCEveryone}}.\\
 
 Why, in fact, libraries for docking campaign have become ultra-large?
 One reason is that larger libraries allow to examine larger area of chemical space which may result in discovering promising chemotype. 
-As have been shown $\text{recently}^{\cite{Lyu2019Ultra-largeChemotypes}}$, docking performance typically improves with the library size.  
+As have been shown recently {\cite{Lyu2019Ultra-largeChemotypes}}, docking performance typically improves with the library size.  
 The other cause is related to the fact that initial hits should go through expensive and lingering process of chemical optimization in order to become lead-like.
 That means that they should possess high binding affinities (which results in lower dosage and weaker off-target effects) while having appropriate \acrshort{admet} properties.
 The larger the docking library, the higher th possibility to find a compound which needs less optimization or doesn't need it at all.
 Hence, it may be less time-consuming to discover hits which don't need optimization through the ultra-large docking campaign than go through numerous cycles of chemical optimization.
-For instance, in ultra-large screening campaign exploiting VirtualFlow $\text{algorithm}^{\cite{Gorgulla2020AnScreens}}$, an inhibitor with nanomolar activity has been identified without any chemical optimization.\\
+For instance, in ultra-large screening campaign exploiting VirtualFlow algorithm {\cite{Gorgulla2020AnScreens}}, an inhibitor with nanomolar activity has been identified without any chemical optimization.\\
 
 Thereby, with an increase of libraries' sizes, computational costs for screening campaigns have become beyond imagination (e.g.,  475 CPU-years in case of \cite{Gorgulla2020AnScreens}).
 Thus, new strategies must be applied to diminish the computational costs in screening campaigns.
-One of the possible solutions is to combine classic molecular docking with \acrshort{qsar} modelling in order to remove molecules which are, according to \acrshort{qsar} analysis, less likely have an appropriate docking score, from screening campaigns.\\
+One of the possible solutions is to combine classic molecular docking with \acrshort{qsar} modelling in order to remove molecules which are, according to \acrshort{qsar} analysis, less likely have an appropriate docking score, in screening campaigns, i.e. have a good molecular docking score. \\
 
 \section{Related works}
 
 Machine learning is not the only way to accelerate docking.
-For example, there have been a case of distributed algorithm creation, in the work of Gorgulla et $\text{al}^{\cite{Gorgulla2020AnScreens}}$. 
+For example, there have been a case of distributed algorithm creation, in the work of Gorgulla et al {\cite{Gorgulla2020AnScreens}}. 
 The main feature of this algorithm, named VirtualFlow, is its linear scaling behaviour: in other words, the acceleration is linear in the number of cores.
 However, the issue of enormous computational resources usage still exists, and the only way to overcome the problem is to employ machine learning in docking campaign.\\
  
+During the last couple of years, a number of works have explored approaches for so-called "accelerated molecular screening".
+In general, all these algorithms require a small part of dataset to be docked in order to be trained: predicted scores of all compounds are used to chose molecules with best predicted scores and perform docking with them.
 In a number of works, the construction of an iterative algorithm has been reported.
-For instance, Deep $\text{Docking}^{\cite{Gentile2020DeepDiscovery}}$ (\acrshort{dd}), a platform which employs \acrshort{qsar} deep models trained on docking scores to iteratively predict the docking outcome for all entities in the library and put away unfavorable molecules, has been presented.
+For instance, Deep Docking {\cite{Gentile2020DeepDiscovery}} (\acrshort{dd}), a platform which employs \acrshort{qsar} deep models trained on docking scores to iteratively predict the docking outcome for all entities in the library and put away unfavorable molecules, has been presented.
 Authors had chosen Morgan fingerprints as features, and had constructed the pipeline in the following way: at initial step, the training subset is docked into the target; in all the rest of the steps, docked molecules are divided into 'hits' and 'non-hits' according to the score cut-off, the \acrshort{dl} model is retrained on the received information and predict docking outcomes on the all entities of the library, and the predefined number of molecules selected randomly from predicted 'hits' and docked in order to augment the training set.\\
 
-Another example of iterations usage is a $\text{paper}^{\cite{Graff2020AcceleratingLearning}}$ describing the application of the Bayesian optimization technique for docking hits search.
+Another example of iterations usage is a paper {\cite{Graff2021AcceleratingLearning}} describing the application of the Bayesian optimization technique for docking hits search.
 This approach uses so called acquisition functions.
 They define docking for which molecules should be performed on the next iteration.
 Authors had tested several types of acquisition functions, but the most simple, greedy acquisition function had been estimated to be the most effective in exploring docking hits
 (greedy acquisition function selects the molecules which have the most negative docking scores for docking).
-The active learning algorithm was utilized to docking hits prioritizing in datasets of various sizes: from Enamine 10k (10,540 compounds) to ultra-large datasets used in large docking $\text{campaign}^{\cite{Lyu2019Ultra-largeChemotypes}}$ by Lyu et al (99.5 million molecules).
-A work with the ultra-large library is of the greatest interest: if the batch size is 0.4\%, the message-passing neural network (\acrshort{mpn}) model finds 87.9\% of the top-50000 (ca. top-0.05\%) scores after exploring 2.4\% of the total pool, NN - 74.7\% and random forest - 71.4\%.\\
+The active learning algorithm was utilized to docking hits prioritizing in datasets of various sizes: from Enamine 10k (10,540 compounds) to ultra-large datasets used in large docking campaign {\cite{Lyu2019Ultra-largeChemotypes}} by Lyu et al (99.5 million molecules).
+A work with the ultra-large library is of the greatest interest: if the batch size is 0.4\%, the message-passing neural network (\acrshort{mpn}) model finds 87.9\% of the top-50000 (ca. top-0.05\%) scores after exploring 2.4\% of the total pool, NN -- 74.7\% and random forest -- 71.4\%.\\
 
-A very recent article, introducing non-iterative docking acceleration algorithm, Lean-Docking, was presented by Berenger et $\text{al}^{\cite{Berenger2021Lean-Docking:Docking}}$. 
+A very recent article, introducing non-iterative docking acceleration algorithm, Lean-Docking, was presented by Berenger et al {\cite{Berenger2021Lean-Docking:Docking}}. 
 The authors have trained a regressor (L2-regularised support vector regressor) to predict docking scores from counted atom pairs fingerprints. 
 According to the paper, initial docking of randomly selected 10,000 compounds and the following training of linear \acrshort{svr} allows to cut down the docking time by 4 times (as long as top-25\% of molecules according to predicted score), while preserving almost all docking hits. 
 Several docking programs have been examined: CCDC Gold, AutoDock-Vina, FRED, Glide and MOE. 
